@@ -9,11 +9,9 @@
     const errorMsg = document.getElementById('error-msg');
     const list = document.getElementById('todo-list');
     const counter = document.getElementById('counter');
-    const filters = {
-      all: document.getElementById('filter-all'),
-      active: document.getElementById('filter-active'),
-      done: document.getElementById('filter-done')
-    };
+    const filterAll = document.getElementById('filter-all');
+    const filterActive = document.getElementById('filter-active');
+    const filterDone = document.getElementById('filter-done');
     let currentFilter = 'all';
 
     function update() {
@@ -51,12 +49,9 @@
       update();
     });
 
-    Object.keys(filters).forEach(key => {
-      filters[key].addEventListener('click', () => {
-        currentFilter = key;
-        update();
-      });
-    });
+    filterAll.addEventListener('click', () => { currentFilter = 'all'; update(); });
+    filterActive.addEventListener('click', () => { currentFilter = 'active'; update(); });
+    filterDone.addEventListener('click', () => { currentFilter = 'done'; update(); });
 
     update();
   });
